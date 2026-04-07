@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TSA — Tender Scoring Advisor</title>
+<title>TΔSA · Tender Scoring Advisor</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20290%20285%22%3E%3Cg%20stroke-width%3D%226%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%20fill%3D%22none%22%3E%3Cline%20x1%3D%22101%22%20y1%3D%22204%22%20x2%3D%22184%22%20y2%3D%22204%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22184%22%20y1%3D%22204%22%20x2%3D%22142%22%20y2%3D%22121%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22142%22%20y1%3D%22121%22%20x2%3D%22101%22%20y2%3D%22204%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22184%22%20y1%3D%22204%22%20x2%3D%22221%22%20y2%3D%22204%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22142%22%20y1%3D%22121%22%20x2%3D%22126%22%20y2%3D%2289%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22101%22%20y1%3D%22204%22%20x2%3D%2285%22%20y2%3D%22237%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22221%22%20y1%3D%22204%22%20x2%3D%22126%22%20y2%3D%2215%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22126%22%20y1%3D%2289%22%20x2%3D%2231%22%20y2%3D%22270%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%2285%22%20y1%3D%22237%22%20x2%3D%22274%22%20y2%3D%22237%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22274%22%20y1%3D%22237%22%20x2%3D%22257%22%20y2%3D%22270%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22126%22%20y1%3D%2215%22%20x2%3D%22163%22%20y2%3D%2215%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%2231%22%20y1%3D%22270%22%20x2%3D%2215%22%20y2%3D%22237%22%20stroke%3D%22%230d3a8c%22%2F%3E%3Cline%20x1%3D%22163%22%20y1%3D%2215%22%20x2%3D%22274%22%20y2%3D%22237%22%20stroke%3D%22%231e6fff%22%2F%3E%3Cline%20x1%3D%2215%22%20y1%3D%22237%22%20x2%3D%22126%22%20y2%3D%2215%22%20stroke%3D%22%231e6fff%22%2F%3E%3Cline%20x1%3D%22257%22%20y1%3D%22270%22%20x2%3D%2231%22%20y2%3D%22270%22%20stroke%3D%22%231e6fff%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;500;600;700&family=Exo+2:ital,wght@0,100;0,200;0,300;1,200;1,300&display=swap');
 
@@ -46,17 +47,7 @@ html,body {
 }
 @keyframes atm { 0%,100%{opacity:.55;transform:translate(-50%,-50%) scale(1)} 50%{opacity:1;transform:translate(-50%,-50%) scale(1.18)} }
 
-/* Scanline global que baja muy despacio — sutil, 0.25% opacidad */
-.scanline {
-  position:fixed; top:-4px; left:0; right:0; height:3px; z-index:3;
-  pointer-events:none;
-  background:linear-gradient(180deg,
-    transparent 0%,
-    rgba(30,111,255,.18) 50%,
-    transparent 100%);
-  animation:globalScan 12s linear infinite;
-}
-@keyframes globalScan { 0%{top:-4px} 100%{top:100%} }
+
 
 /* ════════════════════════════════════════
    HUD BRACKETS — 4 ESQUINAS
@@ -83,12 +74,14 @@ html,body {
 ════════════════════════════════════════ */
 .badge {
   position:fixed; top:22px; right:52px; z-index:10;
-  font-family:'Exo 2',sans-serif; font-weight:300;
-  font-size:8px; letter-spacing:.55em; text-transform:uppercase;
+  font-family:'Exo 2',sans-serif;
   color:rgba(30,111,255,.5);
-  display:flex; align-items:center; gap:7px;
+  display:flex; align-items:center; gap:9px;
   animation:badgePulse 3s ease-in-out infinite;
 }
+.badge-text { display:flex; flex-direction:column; align-items:flex-start; gap:2px; }
+.badge-line1 { font-weight:300; font-size:8.5px; letter-spacing:.45em; text-transform:uppercase; color:rgba(30,111,255,.65); }
+.badge-line2 { font-weight:200; font-size:7.5px; letter-spacing:.35em; color:rgba(30,111,255,.35); text-transform:uppercase; }
 .badge-dot {
   width:5px; height:5px; border-radius:50%;
   background:#1e6fff;
@@ -105,7 +98,7 @@ html,body {
   position:relative; z-index:10; width:100%; height:100%;
   display:flex; flex-direction:column;
   align-items:center; justify-content:center;
-  padding-top:clamp(80px,12vh,140px);
+  padding-top:clamp(30px,5vh,70px);
   gap:0;
 }
 
@@ -114,11 +107,11 @@ html,body {
 ════════════════════════════════════════ */
 .triangle-block {
   display:flex; align-items:center; justify-content:center;
-  margin-bottom:clamp(50px,9vh,90px);
+  margin-bottom:clamp(70px,11vh,120px);
 }
 .pw {
   opacity:0; transform:scale(.48) rotate(-14deg);
-  transition:opacity 1.2s cubic-bezier(.16,1,.3,1), transform 1.2s cubic-bezier(.34,1.56,.64,1);
+  transition:opacity 1.8s cubic-bezier(.16,1,.3,1), transform 2.0s cubic-bezier(.22,1,.36,1);
   filter:
     drop-shadow(0 0 55px rgba(30,111,255,.44))
     drop-shadow(0 0 22px rgba(30,111,255,.26))
@@ -352,8 +345,7 @@ html,body {
   100%{ opacity:0; }
 }
 
-.d-scan { position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,rgba(255,20,20,.9),transparent); animation:scanLine 2.2s linear infinite; }
-@keyframes scanLine { 0%{top:0;opacity:1} 95%{opacity:1} 100%{top:100%;opacity:0} }
+
 .d-noise { position:absolute; inset:0; opacity:.03; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); pointer-events:none; }
 
 /* HUD brackets rojos en denied */
@@ -412,7 +404,7 @@ html,body {
 @keyframes cdBar { to{transform:scaleX(0)} }
 
 /* Ver */
-.ver { position:fixed; bottom:18px; right:52px; font-family:'Exo 2',sans-serif; font-size:8px; letter-spacing:.28em; color:rgba(255,255,255,.1); z-index:20; }
+.ver { display:none; }
 @keyframes screenShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px) skewX(-.6deg)} 75%{transform:translateX(7px) skewX(.6deg)} }
 </style>
 </head>
@@ -422,7 +414,7 @@ html,body {
 <canvas id="stars"></canvas>
 <div class="vignette"></div>
 <div class="atm"></div>
-<div class="scanline"></div>
+
 
 <!-- ── HUD Brackets ── -->
 <div class="hud">
@@ -432,10 +424,10 @@ html,body {
   <div class="hud-corner br"></div>
 </div>
 
-<!-- ── Badge clasificación ── -->
-<div class="badge">
-  <div class="badge-dot"></div>
-  <span>Optimización Precio · LCSP 9/2017</span>
+<div class="badge-text">
+    <span class="badge-line1">Optimización de Precio</span>
+    <span class="badge-line2">TSA v1.0</span>
+  </div>
 </div>
 
 <!-- ════ SPLASH ════ -->
@@ -495,7 +487,7 @@ html,body {
 <!-- ════ DENEGADO ════ -->
 <div id="screen-denied">
   <div class="d-flash" id="d-flash"></div>
-  <div class="d-scan"></div>
+
   <div class="d-noise"></div>
   <div class="d-hud">
     <div class="d-hud-corner tl"></div>
@@ -525,7 +517,7 @@ html,body {
   </div>
 </div>
 
-<div class="ver">TSA v1.0 · LCSP 9/2017</div>
+
 
 <script>
 /* ════ STARFIELD ════ */
@@ -622,7 +614,7 @@ function hookLetter(letterId, subId, withMetrics) {
 hookLetter('lT', 'sub-t', false);
 hookLetter('lS', 'sub-s', false);
 hookLetter('lA', 'sub-a', false);
-hookLetter('lD', 'sub-s', true);
+hookLetter('lD', null, true);   // Δ → solo ilumina variables matemáticas
 
 const lD = document.getElementById('lD');
 lD.addEventListener('mouseenter', () => {
